@@ -12,10 +12,14 @@ public class Aluno implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String aluno;
     private Integer idade;
     private String curso;
     private Boolean matriculado;
+
+    public Aluno(){
+    }
 
     public Aluno(Long id, String aluno, Integer idade, String curso, Boolean matriculado) {
         this.id = id;
@@ -25,8 +29,7 @@ public class Aluno implements Serializable {
         this.matriculado = matriculado;
     }
 
-    public Aluno(){
-    }
+
 
     public Long getId() {
         return id;

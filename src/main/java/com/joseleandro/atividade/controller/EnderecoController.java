@@ -19,7 +19,7 @@ import com.joseleandro.atividade.entities.Endereco;
 import com.joseleandro.atividade.services.EnderecoService;
 
 @RestController
-@RequestMapping(value = "/enderecos/")
+@RequestMapping(value = "/enderecos")
 public class EnderecoController {
 
 	@Autowired
@@ -37,19 +37,19 @@ public class EnderecoController {
 		return ResponseEntity.ok().body(obj);
 	}
 
-	@PostMapping(value = "/cadastrar-endereco")
+	@PostMapping(value = "/cadastrar")
     public ResponseEntity<Endereco> create(@RequestBody Endereco endereco) throws URISyntaxException{
         Endereco createdEndereco = service.create(endereco);
         return ResponseEntity.created(new URI("/enderecos/" + createdEndereco.getId())).body(createdEndereco);
     }
 
-	@PutMapping(value = "atualizar/{id}")
+	@PutMapping(value = "/atualizar/{id}")
 	public ResponseEntity<Endereco> update(@PathVariable Long id, @RequestBody Endereco endereco) {
 		Endereco updatedEndereco = service.update(id, endereco);
 		return ResponseEntity.ok().body(updatedEndereco);
 	}
 
-	@DeleteMapping(value = "deletar/{id}")
+	@DeleteMapping(value = "/deletar/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
